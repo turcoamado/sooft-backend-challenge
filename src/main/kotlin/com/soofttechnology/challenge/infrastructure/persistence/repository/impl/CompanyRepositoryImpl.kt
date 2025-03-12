@@ -2,6 +2,7 @@ package com.soofttechnology.challenge.infrastructure.persistence.repository.impl
 
 import com.soofttechnology.challenge.infrastructure.persistence.entity.CompanyEntity
 import com.soofttechnology.challenge.infrastructure.persistence.repository.CompanyRepositoryCustom
+import jakarta.annotation.PostConstruct
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.springframework.beans.factory.annotation.Value
@@ -16,7 +17,12 @@ class CompanyRepositoryImpl(
 
     @Value("\${company.query.lastDays}")
     private val lastDays: Long = 30
-    private val startDate = LocalDateTime.now().minusDays(lastDays)
+    private lateinit var startDate: LocalDateTime
+
+    @PostConstruct
+    fun init() {
+        startDate = LocalDateTime.now().minusDays(lastDays)
+    }
 
     override fun getCompaniesWithTransactionsInLastMonth(): List<CompanyEntity> {
         val query = """

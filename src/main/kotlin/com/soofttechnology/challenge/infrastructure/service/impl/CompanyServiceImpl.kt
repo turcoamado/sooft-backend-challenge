@@ -30,18 +30,7 @@ class CompanyServiceImpl(
     }
 
     override fun register(request: RegisterCompanyRequest): CompanyResponse {
-        val cuitValidationError = CuitValidator.validate(request.cuit)
-        if (cuitValidationError != null) {
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, cuitValidationError)
-        }
-
-        if (companyRepository.existsByCuit(request.cuit)) {
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "A company with this CUIT already exists.")
-        }
-
-        if (companyRepository.existsByCompanyName(request.companyName)) {
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "A company with this name already exists.")
-        }
+        validateCompanyData(request)
 
         val companyEntity = companyMapper.domainToEntity(companyMapper.requestToDomain(request)).apply { // Convert to DTO -> Domain -> Entity
             registrationDate = LocalDateTime.now()
@@ -49,5 +38,14 @@ class CompanyServiceImpl(
 
         val savedCompany = companyRepository.save(companyEntity)
         return companyMapper.domainToResponse(companyMapper.entityToDomain(savedCompany)) // Entity -> Domain -> Response
+    }
+
+    private fun validateCompanyData(request: RegisterCompanyRequest) {
+        CuitValidator.validate(request.cuit)?.let { throw ResponseStatusException(HttpStatus.BAD_REQUEST, it) }
+
+        when {
+            companyRepository.existsByCuit(request.cuit) -> throw ResponseStatusException(HttpStatus.BAD_REQUEST, "A company with this CUIT already exists.")
+            companyRepository.existsByCompanyName(request.companyName) -> throw ResponseStatusException(HttpStatus.BAD_REQUEST, "A company with this name already exists.")
+        }
     }
 }
