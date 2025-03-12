@@ -40,6 +40,7 @@ INSERT INTO transactions (company_id, amount, debit_account, credit_account, dat
 (1, 950.00, 'ACC-1009', 'ACC-2010', '2025-01-05 09:10:00');
 
 -- Beta company
+INSERT INTO transactions (company_id, amount, debit_account, credit_account, date) VALUES
 (2, 1200.00, 'ACC-2001', 'ACC-3001', '2024-11-15 10:30:00'),
 (2, 500.75, 'ACC-2002', 'ACC-3002', '2024-12-25 11:45:00'),
 (2, 650.00, 'ACC-2003', 'ACC-3003', '2024-12-25 14:10:00'),
@@ -52,6 +53,7 @@ INSERT INTO transactions (company_id, amount, debit_account, credit_account, dat
 (2, 1300.50, 'ACC-2010', 'ACC-3010', '2025-03-11 09:50:00'); -- Recent
 
 -- Gamma company
+INSERT INTO transactions (company_id, amount, debit_account, credit_account, date) VALUES
 (3, 250.00, 'ACC-3001', 'ACC-4001', '2024-02-05 10:10:00'),
 (3, 350.25, 'ACC-3002', 'ACC-4002', '2024-02-05 14:30:00'),
 (3, 450.00, 'ACC-3003', 'ACC-4003', '2024-02-15 11:20:00'),
@@ -69,9 +71,10 @@ INSERT INTO transactions (company_id, amount, debit_account, credit_account, dat
 (4, 500.25, 'ACC-4002', 'ACC-5002', '2024-03-30 12:00:00'),
 (4, 600.50, 'ACC-4003', 'ACC-5003', '2024-05-20 15:20:00'),
 (4, 700.75, 'ACC-4004', 'ACC-5004', '2024-05-27 09:40:00'),
-(4, 800.00, 'ACC-4005', 'ACC-5005', '2024-12-28 11:30:00'),
+(4, 800.00, 'ACC-4005', 'ACC-5005', '2024-12-28 11:30:00');
 
 -- Epsilon company
+INSERT INTO transactions (company_id, amount, debit_account, credit_account, date) VALUES
 (5, 900.25, 'ACC-5001', 'ACC-6001', '2025-01-02 08:00:00'),
 (5, 1000.50, 'ACC-5002', 'ACC-6002', '2025-02-10 14:10:00'),
 (5, 1100.75, 'ACC-5003', 'ACC-6003', '2025-02-15 17:20:00'), -- Reciente
