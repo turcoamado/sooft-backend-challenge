@@ -77,7 +77,7 @@ INSERT INTO transactions (company_id, amount, debit_account, credit_account, dat
 INSERT INTO transactions (company_id, amount, debit_account, credit_account, date) VALUES
 (5, 900.25, 'ACC-5001', 'ACC-6001', '2025-01-02 08:00:00'),
 (5, 1000.50, 'ACC-5002', 'ACC-6002', '2025-02-10 14:10:00'),
-(5, 1100.75, 'ACC-5003', 'ACC-6003', '2025-02-15 17:20:00'), -- Reciente
-(5, 1200.00, 'ACC-5004', 'ACC-6004', '2025-02-18 12:30:00'), -- Reciente
-(5, 1300.25, 'ACC-5005', 'ACC-6005', '2025-02-20 10:45:00'); -- Reciente
+(5, 1100.75, 'ACC-5003', 'ACC-6003', '2025-02-15 17:20:00'), -- Recent
+(5, 1200.00, 'ACC-5004', 'ACC-6004', '2025-02-18 12:30:00'), -- Recent
+(5, 1300.25, 'ACC-5005', 'ACC-6005', '2025-02-20 10:45:00'); -- Recent
 
